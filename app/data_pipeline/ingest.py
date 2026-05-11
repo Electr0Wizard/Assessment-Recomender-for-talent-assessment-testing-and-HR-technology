@@ -54,8 +54,8 @@ def ingest_catalog():
         documents.append(Document(page_content=content, metadata=metadata))
 
     print("Generating embeddings...")
-    # embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
-    embeddings = HuggingFaceEmbeddings(model_name="intfloat/e5-base-v2")
+    embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
+    # embeddings = HuggingFaceEmbeddings(model_name="intfloat/e5-base-v2")
     vectorstore = FAISS.from_documents(documents, embeddings)
     
     os.makedirs(os.path.dirname(VECTORSTORE_PATH), exist_ok=True)
